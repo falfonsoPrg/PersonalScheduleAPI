@@ -12,7 +12,9 @@ mongoose.connect(process.env.DB_CONNECT,
     {useNewUrlParser: true,useUnifiedTopology: true},
     () => { console.log('Connected to DB')
 })
-
+app.get('/',(req,res)=>{
+    res.send('This is the api for Personal Schedule')
+})
 //Import routes
 const authRoute = require('./routes/auth')
 const usersRoute = require('./routes/users')
