@@ -20,6 +20,27 @@ const loginValidation = (data) => {
     return schema.validate(data)
 }
 
+const taskValidation = (data) => {
+    const schema = Joi.object({
+        title: Joi.string().min(1).required(),
+        description: Joi.string().min(1).required(),
+        start_date:Joi.date().required(),
+        end_date:Joi.date().required(),
+        send_email:Joi.boolean().required(),
+        send_cellphone:Joi.boolean().required()
+    })
+    return schema.validate(data)
+}
+
+const tagValidation = (data) => {
+    const schema = Joi.object({
+        name: Joi.string().min(1).required(),
+        color: Joi.string().min(1).required()
+    })
+    return schema.validate(data)
+}
 
 module.exports.registerValidation = registerValidation
 module.exports.loginValidation = loginValidation
+module.exports.taskValidation = taskValidation
+module.exports.tagValidation = tagValidation
