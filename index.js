@@ -2,10 +2,26 @@ const express = require('express')
 const bodyParser = require('body-parser')
 const mongoose = require('mongoose')
 const dotenv = require('dotenv')
+const cors = require('cors');
 
 const app = express()
 const port = process.env.PORT || 4000
 dotenv.config();
+
+//Cors configuration
+const config = {
+    application: {
+        cors: {
+            server: [{
+                origin: "*",
+                credentials: true
+            }]
+        }
+    }
+}
+app.use(cors(
+    config.application.cors.server
+  ));
 
 //DB Connection
 mongoose.set('useCreateIndex', true);
